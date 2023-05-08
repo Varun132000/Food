@@ -1,16 +1,19 @@
-import { Alert, Dimensions, Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
-import SignUp from './SignUp'
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable eqeqeq */
+/* eslint-disable prettier/prettier */
+import { Alert, Dimensions, Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import SignUp from './SignUp';
 const Login = ({navigation}) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const onLogin=()=>{
-        if(email=='Varun@gmail.com' && password=='1234'){
-            navigation.navigate('Dashboard')
-        }else{
-            Alert.alert('Enter Valid Detail')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const onLogin = ()=>{
+        if (email == 'Varun@gmail.com' && password == '1234'){
+            navigation.navigate('Dashboard');
+        } else {
+            Alert.alert('Enter Valid Detail');
         }
-    }
+    };
     return (
         <SafeAreaView>
             <View style={styles.Logo}>
@@ -43,7 +46,7 @@ const Login = ({navigation}) => {
                         Forgot your password?
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={() => { onLogin() }}>
+                <TouchableOpacity style={styles.btn} onPress={() => { onLogin(); }}>
                     <Text style={styles.done}>
                         Login
                     </Text>
@@ -61,7 +64,7 @@ const Login = ({navigation}) => {
                         <Image style={styles.btnImage} source={require('../Assests/Images/Facebook-logo.png')} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ width: 10 }}></View>
+                <View style={{ width: 10 }} />
                 <View style={styles.btnSecondary1}>
                     <TouchableOpacity>
                         <Text style={{ color: 'black', fontWeight: 'bold' }}>
@@ -81,10 +84,10 @@ const Login = ({navigation}) => {
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
 
 const styles = StyleSheet.create({
     Logo: {
@@ -94,14 +97,14 @@ const styles = StyleSheet.create({
         marginTop: 50,
         marginLeft: 20,
         marginRight: 20,
-        minHeight: 101
+        minHeight: 101,
     },
     foodLogo: {
         height: 250,
         width: 250,
         marginTop: 100,
         alignSelf: 'center',
-        marginBottom: 20
+        marginBottom: 20,
     },
     log: {
         fontWeight: '500',
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
         fontSize: 35,
         marginTop: 12,
         alignSelf: 'center',
-        marginBottom: 30
+        marginBottom: 30,
     },
     emailText: {
         height: 38,
@@ -119,14 +122,14 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         borderRadius: 12,
-        color:'black'
+        color:'black',
     },
     email: {
         fontSize: 13,
         width: 50,
         color: 'black',
         marginLeft: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     password: {
         fontSize: 13,
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 30,
         fontWeight: 'bold',
-        marginTop: 5
+        marginTop: 5,
     },
     PasswordText: {
         height: 38,
@@ -144,14 +147,14 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         borderRadius: 12,
-        color:'black'
+        color:'black',
     },
     forgotPassword: {
         textAlign: 'right',
         marginRight: 20,
         marginTop: 5,
         fontWeight: '500',
-        color: 'red'
+        color: 'red',
     },
     btn: {
         height: 56,
@@ -161,23 +164,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginLeft: 25,
         marginRight: 30,
-        borderRadius: 12
+        borderRadius: 12,
     },
     done: {
         fontSize: 20,
         fontWeight: '500',
         textTransform: 'uppercase',
-        color: 'white'
+        color: 'white',
     },
     sign: {
         color: 'black',
         textAlign: 'center',
-        marginTop: 15
+        marginTop: 15,
     },
     btnsign: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginBottom: 12
+        marginBottom: 12,
     },
     btnSecondary: {
         height: 50,
@@ -195,7 +198,7 @@ const styles = StyleSheet.create({
     btnImage: {
         width: 30,
         height: 30,
-        marginLeft: 10
+        marginLeft: 10,
     },
     btnSecondary1: {
         height: 50,
@@ -218,7 +221,7 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontWeight: 'bold',
         textDecorationLine: 'underline',
-        marginLeft: 10
-    }
+        marginLeft: 10,
+    },
 
-})
+});

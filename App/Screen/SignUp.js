@@ -1,16 +1,18 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { View, Text, Dimensions, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView, } from 'react-native';
-function SignUp({ navigation, }) {
+import { View, Text, Dimensions, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+function SignUp({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     return (
         <ScrollView style={{ backgroundColor: 'white' }}>
             <SafeAreaView style={{}}>
-                <View style={styles.centeredView}>
-                </View>
+                <View style={styles.centeredView} />
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <View style={styles.innerBox}>
-                        <Image source={require('../Assests/Images/food_logo.png')} style={styles.logoImage}></Image>
+                        <Image source={require('../Assests/Images/food_logo.png')} style={styles.logoImage} />
                         <Text style={styles.emailText}>Email</Text>
                         <TextInput
                             style={styles.emailTextView}
@@ -33,8 +35,7 @@ function SignUp({ navigation, }) {
                             }}>
                             <Text style={styles.buttonText}>Signup</Text>
                         </TouchableOpacity>
-                        <View style={{ flexDirection: 'row' }}>
-                        </View>
+                        <View style={{ flexDirection: 'row' }} />
                     </View>
                 </View>
             </SafeAreaView>
