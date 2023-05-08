@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, Dimensions, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView, } from 'react-native';
+import auth from '@react-native-firebase/auth';
+import { View, Text, Dimensions, StyleSheet, Alert,TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView, } from 'react-native';
 function SignUp({ navigation, }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const onSignUp = async () => {
+        try {
+            if (email.length > 0 && password.length > 0) {
+                const isUserCreate = await auth().createUserWithEmailAndPassword(email, password)
+                console.log(isUserCreate);
+            }else{
+                Alert.alert('Enter all data')
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
     return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
-            <SafeAreaView style={{}}>
+        <ScrollView>
+            <SafeAreaView>
                 <View style={styles.centeredView}>
                 </View>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -15,26 +28,28 @@ function SignUp({ navigation, }) {
                         <TextInput
                             style={styles.emailTextView}
                             placeholder="Enter your email address"
+                            placeholderTextColor={'black'}
+                            value={email}
                             onChangeText={setEmail}
                         />
                         <Text style={styles.passwordText}>Password</Text>
                         <TextInput
-
                             style={styles.passwordTextView}
                             placeholder="Enter your password"
+                            value={password}
                             onChangeText={setPassword}
+                            placeholderTextColor={'black'}
                             secureTextEntry
                         />
                         <TouchableOpacity
                             style={styles.button}
                             color="blue"
                             onPress={() => {
-                                SignUpClicked();
+                                onSignUp();
                             }}>
                             <Text style={styles.buttonText}>Signup</Text>
                         </TouchableOpacity>
-                        <View style={{ flexDirection: 'row' }}>
-                        </View>
+                        
                     </View>
                 </View>
             </SafeAreaView>
