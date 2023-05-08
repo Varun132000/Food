@@ -1,14 +1,24 @@
 import { Alert, Dimensions, Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
+import auth from '@react-native-firebase/auth';
 import SignUp from './SignUp'
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const onLogin=()=>{
-        if(email=='Varun@gmail.com' && password=='1234'){
-            navigation.navigate('Dashboard')
-        }else{
-            Alert.alert('Enter Valid Detail')
+    const onLogin = async () => {
+        try {
+            if (email.length > 0 && password.length > 0) {
+                const isuserLogin = await auth().signInWithEmailAndPassword(
+                    email,
+                    password
+                )
+                navigation.navigate('Dashboard')
+            }else{
+                Alert.alert('Enter All Data')
+            }
+        } catch (err) {
+            console.log(err);
+            Alert.alert('Enter Valid Data')
         }
     }
     return (
@@ -26,6 +36,7 @@ const Login = ({navigation}) => {
                 <TextInput
                     style={styles.emailText}
                     placeholder="Enter your email address"
+                    value={email}
                     onChangeText={(Data) => setEmail(Data)}
                     placeholderTextColor={'black'}
                 />
@@ -35,6 +46,7 @@ const Login = ({navigation}) => {
                 <TextInput
                     style={styles.PasswordText}
                     placeholder="Enter your Password"
+                    value={password}
                     onChangeText={(Data) => setPassword(Data)}
                     placeholderTextColor={'black'}
                 />
@@ -48,6 +60,7 @@ const Login = ({navigation}) => {
                         Login
                     </Text>
                 </TouchableOpacity>
+                
                 <Text style={styles.sign}>
                     ____________________ or Sign In with ___________________
                 </Text>
@@ -74,7 +87,7 @@ const Login = ({navigation}) => {
                 <Text style={styles.signupAcc} >
                     Don't have an account?
                 </Text>
-                <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                     <Text style={styles.signup}>
                         Sign up
                     </Text>
@@ -119,7 +132,7 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         borderRadius: 12,
-        color:'black'
+        color: 'black'
     },
     email: {
         fontSize: 13,
@@ -144,7 +157,7 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         borderRadius: 12,
-        color:'black'
+        color: 'black'
     },
     forgotPassword: {
         textAlign: 'right',
